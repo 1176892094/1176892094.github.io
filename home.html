@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="card">
+    <h2>Welcome</h2>
+    <p id="userInfo"></p>
+
+    <button class="red" id="logoutBtn">退出</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="auth.js"></script>
+<script src="bg.js"></script>
+
+<script>
+    async function init() {
+        const { data } = await getUser();
+
+        if (!data.user) {
+            window.location.href = "index.html";
+            return;
+        }
+
+        document.getElementById("userInfo").innerText =
+            "当前用户：" + data.user.email;
+    }
+
+    document.getElementById("logoutBtn").onclick = async () => {
+        await logout();
+        window.location.href = "index.html";
+    };
+
+    init();
+</script>
+
+</body>
+</html>

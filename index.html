@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Neon Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="card">
+    <h2>Neon Login</h2>
+    <div class="input-group">
+        <input id="email" placeholder="邮箱">
+        <input id="password" type="password" placeholder="密码">
+    </div>
+    <div class="btn-row">
+        <button class="green" id="signupBtn">注册</button>
+        <button class="blue" id="loginBtn">登录</button>
+    </div>
+
+    <p id="status"></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="auth.js"></script>
+<script src="bg.js"></script>
+
+<script>
+    const status = document.getElementById("status");
+
+    document.getElementById("signupBtn").onclick = async () =>
+    {
+        const email = emailInput();
+        const password = passInput();
+
+        const {error} = await signup(email, password);
+
+        status.innerText = error ? error.message : "注册成功";
+    };
+
+    document.getElementById("loginBtn").onclick = async () =>
+    {
+        const email = emailInput();
+        const password = passInput();
+
+        const {data, error} = await login(email, password);
+
+        if (error)
+        {
+            status.innerText = error.message;
+            return;
+        }
+
+        window.location.href = "home.html";
+    };
+
+    function emailInput()
+    {
+        return document.getElementById("email").value;
+    }
+
+    function passInput()
+    {
+        return document.getElementById("password").value;
+    }
+</script>
+
+</body>
+</html>
