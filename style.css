@@ -65,7 +65,28 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 暗色主题 */
+/* ===== 系统颜色自动切换 ===== */
+/* 默认亮色主题变量已经在 :root 中定义 */
+
+/* 检测系统是否为暗色模式 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #0a1628;
+        --bg-secondary: #0f2035;
+        --bg-card: rgba(15, 32, 53, 0.8);
+        --bg-glass: rgba(15, 32, 53, 0.6);
+        --text-primary: #e0f0f8;
+        --text-secondary: #a0c4d8;
+        --text-tertiary: #6a8fa8;
+        --text-light: #4a6f88;
+        --border-color: rgba(0, 188, 212, 0.2);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* 手动切换的暗色主题（优先级更高） */
 [data-theme="dark"] {
     --bg-primary: #0a1628;
     --bg-secondary: #0f2035;
@@ -79,6 +100,22 @@
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* 手动切换的亮色主题（覆盖系统暗色） */
+[data-theme="light"] {
+    --bg-primary: #f8fdfe;
+    --bg-secondary: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --bg-glass: rgba(255, 255, 255, 0.6);
+    --text-primary: #1a2e3f;
+    --text-secondary: #4a6578;
+    --text-tertiary: #7a95a8;
+    --text-light: #a0b8c8;
+    --border-color: rgba(0, 188, 212, 0.15);
+    --shadow-sm: 0 1px 3px rgba(0, 150, 136, 0.08);
+    --shadow-md: 0 4px 20px rgba(0, 150, 136, 0.1);
+    --shadow-lg: 0 10px 40px rgba(0, 150, 136, 0.12);
 }
 
 * {

@@ -1,5 +1,6 @@
 // script.js - 蓝绿渐变风格
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function ()
+{
     // ===== 文章数据 =====
     const postsData = [
         {
@@ -56,11 +57,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentFilter = 'all';
 
     // ===== 渲染文章列表 =====
-    function renderPosts(posts) {
+    function renderPosts(posts)
+    {
         const grid = document.getElementById('postsGrid');
         grid.innerHTML = '';
 
-        posts.forEach(post => {
+        posts.forEach(post =>
+        {
             const card = document.createElement('article');
             card.className = 'post-card';
             card.innerHTML = `
@@ -79,12 +82,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== 打开文章 =====
-    function openPost(post) {
+    function openPost(post)
+    {
         showToast(`📖 正在阅读: ${post.title}`);
     }
 
     // ===== Toast 通知 =====
-    function showToast(message) {
+    function showToast(message)
+    {
         const existing = document.querySelector('.toast');
         if (existing) existing.remove();
 
@@ -114,16 +119,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== 分类筛选 =====
-    document.querySelectorAll('.filter-tab').forEach(tab => {
-        tab.addEventListener('click', function() {
+    document.querySelectorAll('.filter-tab').forEach(tab =>
+    {
+        tab.addEventListener('click', function ()
+        {
             document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
             this.classList.add('active');
 
             currentFilter = this.dataset.filter;
 
-            if (currentFilter === 'all') {
+            if (currentFilter === 'all')
+            {
                 filteredPosts = [...postsData];
-            } else {
+            } else
+            {
                 filteredPosts = postsData.filter(post =>
                     post.category.toLowerCase() === currentFilter
                 );
@@ -134,8 +143,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===== 数字递增动画 =====
-    function animateNumbers() {
-        document.querySelectorAll('.stat-number').forEach(stat => {
+    function animateNumbers()
+    {
+        document.querySelectorAll('.stat-number').forEach(stat =>
+        {
             const target = stat.dataset.count;
             const isK = target.includes('k');
             const num = parseInt(target);
@@ -144,9 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const increment = num / (duration / 16);
             let current = start;
 
-            const timer = setInterval(() => {
+            const timer = setInterval(() =>
+            {
                 current += increment;
-                if (current >= num) {
+                if (current >= num)
+                {
                     current = num;
                     clearInterval(timer);
                 }
@@ -155,18 +168,92 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== 主题切换 =====
+// ===== 系统颜色主题切换（完整版） =====
     const themeToggle = document.getElementById('themeToggle');
-    let isDark = false;
+    const sunPath = 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z';
+    const moonPath = 'M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z';
 
+// 获取系统颜色偏好
+    function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+// 获取当前主题（优先手动设置，其次系统）
+    function getCurrentTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme; // 'dark' 或 'light'
+        }
+        return 'auto'; // 跟随系统
+    }
+
+// 应用主题
+    function applyTheme(theme) {
+        const html = document.documentElement;
+        const iconPath = themeToggle.querySelector('path');
+
+        if (theme === 'auto') {
+            // 移除手动设置，跟随系统
+            html.removeAttribute('data-theme');
+            const systemTheme = getSystemTheme();
+            iconPath.setAttribute('d', systemTheme === 'dark' ? sunPath : moonPath);
+            localStorage.removeItem('theme');
+        } else {
+            // 手动设置主题
+            html.setAttribute('data-theme', theme);
+            iconPath.setAttribute('d', theme === 'dark' ? sunPath : moonPath);
+            localStorage.setItem('theme', theme);
+        }
+    }
+
+// 初始化主题
+    function initTheme() {
+        const currentTheme = getCurrentTheme();
+        applyTheme(currentTheme);
+
+        // 如果是自动模式，更新图标
+        if (currentTheme === 'auto') {
+            const systemTheme = getSystemTheme();
+            const iconPath = themeToggle.querySelector('path');
+            iconPath.setAttribute('d', systemTheme === 'dark' ? sunPath : moonPath);
+        }
+    }
+
+// 主题切换按钮（三态切换：自动 → 暗色 → 亮色 → 自动）
     themeToggle.addEventListener('click', () => {
-        isDark = !isDark;
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : '');
-        themeToggle.querySelector('svg').style.color = isDark ? 'var(--aqua-400)' : '';
+        const currentTheme = getCurrentTheme();
+
+        if (currentTheme === 'auto') {
+            applyTheme('dark');
+            showToast('🌙 已切换为暗色模式');
+        } else if (currentTheme === 'dark') {
+            applyTheme('light');
+            showToast('☀️ 已切换为亮色模式');
+        } else {
+            applyTheme('auto');
+            const systemTheme = getSystemTheme();
+            showToast(`🔄 已切换为自动模式（当前为${systemTheme === 'dark' ? '暗色' : '亮色'}）`);
+        }
     });
 
+// 监听系统颜色变化（当用户切换系统主题时自动响应）
+    const systemThemeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+    systemThemeMedia.addEventListener('change', (e) => {
+        const currentTheme = getCurrentTheme();
+        // 仅在自动模式下响应系统变化
+        if (currentTheme === 'auto') {
+            const iconPath = themeToggle.querySelector('path');
+            iconPath.setAttribute('d', e.matches ? sunPath : moonPath);
+            showToast(`🔄 系统主题已切换为${e.matches ? '暗色' : '亮色'}模式`);
+        }
+    });
+
+// 初始化
+    initTheme();
+
     // ===== 滚动进度条 =====
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () =>
+    {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const progress = (scrollTop / docHeight) * 100;
@@ -174,35 +261,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 回到顶部按钮
         const backToTop = document.getElementById('backToTop');
-        if (scrollTop > 500) {
+        if (scrollTop > 500)
+        {
             backToTop.classList.add('visible');
-        } else {
+        } else
+        {
             backToTop.classList.remove('visible');
         }
     });
 
     // ===== 回到顶部 =====
-    document.getElementById('backToTop').addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('backToTop').addEventListener('click', () =>
+    {
+        window.scrollTo({top: 0, behavior: 'smooth'});
     });
 
     // ===== 移动端菜单 =====
     const menuToggle = document.getElementById('menuToggle');
     const navList = document.querySelector('.nav-list');
 
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function ()
+    {
         this.classList.toggle('active');
         navList.classList.toggle('active');
     });
 
     // ===== 导航链接 =====
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
+    document.querySelectorAll('.nav-link').forEach(link =>
+    {
+        link.addEventListener('click', function (e)
+        {
             e.preventDefault();
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
             this.classList.add('active');
 
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 768)
+            {
                 navList.classList.remove('active');
                 menuToggle.classList.remove('active');
             }
@@ -210,31 +304,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===== CTA 按钮 =====
-    document.getElementById('ctaPrimary').addEventListener('click', () => {
+    document.getElementById('ctaPrimary').addEventListener('click', () =>
+    {
         showToast('🚀 开始你的阅读之旅！');
-        document.querySelector('.posts').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('.posts').scrollIntoView({behavior: 'smooth'});
     });
 
-    document.getElementById('ctaSecondary').addEventListener('click', () => {
+    document.getElementById('ctaSecondary').addEventListener('click', () =>
+    {
         showToast('💡 了解更多关于 Aqua Blog 的信息');
     });
 
     // ===== 订阅表单 =====
-    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+    document.getElementById('newsletterForm').addEventListener('submit', function (e)
+    {
         e.preventDefault();
         const email = this.querySelector('input').value;
-        if (email) {
+        if (email)
+        {
             showToast('✨ 订阅成功！欢迎加入我们的社区。');
             this.querySelector('input').value = '';
         }
     });
 
     // ===== 气泡动画 =====
-    function createBubbles() {
+    function createBubbles()
+    {
         const container = document.getElementById('bubbles');
         const count = 12;
 
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < count; i++)
+        {
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
             const size = Math.random() * 40 + 20;
@@ -248,7 +348,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ===== 初始化 =====
-    function init() {
+    function init()
+    {
         renderPosts(postsData);
         animateNumbers();
         createBubbles();
