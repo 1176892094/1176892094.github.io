@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>云谷千羽的博客</title>
+    <meta name="description" content="云谷千羽的个人博客：记录 Astraia 与 Astraia-Net 的 Unity 框架、网络同步与纯 C# 核心实践。">
+    <title>云谷千羽的博客 · Astraia 工程笔记</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,27 +33,25 @@
                     </svg>
                 </div>
                 <span class="logo-text">
-                        <span class="logo-aqua">云谷千羽的博客</span>
-                    </span>
+                    <span class="logo-aqua">云谷千羽</span><span class="logo-blog">的博客</span>
+                </span>
             </div>
 
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="#" class="nav-link active">首页</a></li>
-                    <li><a href="#" class="nav-link">探索</a></li>
-                    <li><a href="#" class="nav-link">归档</a></li>
-                    <li><a href="#" class="nav-link">项目</a></li>
-                    <li><a href="#" class="nav-link">关于</a></li>
+                    <li><a href="#home" class="nav-link active" data-anchor="home">首页</a></li>
+                    <li><a href="#posts" class="nav-link" data-anchor="posts">文章</a></li>
+                    <li><a href="#projects" class="nav-link" data-anchor="projects">项目</a></li>
+                    <li><a href="#about" class="nav-link" data-anchor="about">关于</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <button class="btn-icon search-btn" aria-label="搜索">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"/>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <a class="btn-icon github-header" href="https://github.com/1176892094" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
-                </button>
+                </a>
                 <button class="btn-icon theme-btn" id="themeToggle" aria-label="切换主题">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -74,42 +73,42 @@
     <!-- 主要内容区域 -->
     <main>
         <!-- 英雄区域 -->
-        <section class="hero">
+        <section class="hero" id="home">
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="badge-dot"></span>
-                    探索无限可能
+                    开源框架 · 工程笔记
                 </div>
                 <h1 class="hero-title">
-                    <span class="title-gradient">代码与设计</span>
+                    <span class="title-gradient">从纯 C# 核心</span>
                     <br>
-                    <span class="title-gradient">在此交融</span>
+                    <span class="title-gradient">到 Unity 客户端框架</span>
                 </h1>
                 <p class="hero-desc">
-                    在蓝绿渐变的数字海洋中，记录每一次技术浪潮与创意涌现。
+                    记录 Astraia 与 Astraia-Net 的架构选择、网络同步、确定性模拟与编辑器工具链实践。
                 </p>
                 <div class="hero-buttons">
                     <button class="btn-primary" id="ctaPrimary">
-                        <span>开始阅读</span>
+                        <span>阅读文章</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="5" y1="12" x2="19" y2="12"/>
                             <polyline points="12 5 19 12 12 19"/>
                         </svg>
                     </button>
-                    <button class="btn-outline" id="ctaSecondary">了解更多</button>
+                    <button class="btn-outline" id="ctaSecondary">查看项目</button>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number" data-count="128">0</span>
-                        <span class="stat-label">篇文章</span>
+                        <span class="stat-number" data-count="8">0</span>
+                        <span class="stat-label">篇技术文章</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number" data-count="45">0</span>
-                        <span class="stat-label">个项目</span>
+                        <span class="stat-number" data-count="2">0</span>
+                        <span class="stat-label">个开源仓库</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number" data-count="12k">0</span>
-                        <span class="stat-label">读者</span>
+                        <span class="stat-number" data-count="24k">0</span>
+                        <span class="stat-label">行核心源码</span>
                     </div>
                 </div>
             </div>
@@ -133,127 +132,196 @@
         <section class="featured">
             <div class="section-header">
                 <h2 class="section-title"><span class="title-icon">✦</span>精选文章</h2>
-                <a href="#" class="section-link">查看全部 →</a>
+                <a href="#posts" class="section-link js-scroll">查看全部 →</a>
             </div>
 
             <div class="featured-grid">
-                <div class="featured-card main-card">
+                <article class="featured-card main-card" data-post="arch">
                     <div class="card-image">
                         <div class="image-gradient"></div>
-                        <span class="card-tag">热门</span>
+                        <span class="card-tag">架构</span>
                     </div>
                     <div class="card-body">
                         <div class="card-meta">
-                            <span class="meta-category">JavaScript</span>
-                            <span class="meta-date">2025-05-29</span>
+                            <span class="meta-category">架构设计</span>
+                            <span class="meta-date">2026-08-16</span>
                         </div>
-                        <h3 class="card-title">深入理解异步编程：从回调到 async/await</h3>
-                        <p class="card-desc">探索JavaScript异步编程的演变历程，理解Promise、Generator和async/await的内部机制。</p>
+                        <h3 class="card-title">Astraia 是怎么长出来的：一个 Unity 框架的两层架构</h3>
+                        <p class="card-desc">同一个核心库，既被 Unity 客户端以 DLL 引用，又被 .NET 大厅服务器直接使用。梳理两个仓库的分工与依赖方向。</p>
                         <div class="card-footer">
                             <div class="author">
-                                <div class="author-avatar">CD</div>
-                                <span class="author-name">CodeDiver</span>
+                                <div class="author-avatar">云</div>
+                                <span class="author-name">云谷千羽</span>
                             </div>
-                            <span class="read-time">8 分钟阅读</span>
+                            <span class="read-time">9 分钟阅读</span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="featured-card">
+                <article class="featured-card" data-post="network">
                     <div class="card-body">
                         <div class="card-meta">
-                            <span class="meta-category">CSS</span>
-                            <span class="meta-date">2025-05-27</span>
+                            <span class="meta-category">网络同步</span>
+                            <span class="meta-date">2026-08-30</span>
                         </div>
-                        <h3 class="card-title">CSS 渐变大师课：创造令人惊叹的视觉效果</h3>
-                        <p class="card-desc">从线性渐变到锥形渐变，掌握CSS渐变的所有技巧。</p>
+                        <h3 class="card-title">对象同步设计：NetworkEntity、模块与观察者</h3>
+                        <p class="card-desc">从 spawn 快照到 dirty 位，看一个网络对象如何被实体、模块与观察者列表组织起来。</p>
                         <div class="card-footer">
                             <div class="author">
-                                <div class="author-avatar">SG</div>
-                                <span class="author-name">StyleGuru</span>
+                                <div class="author-avatar">云</div>
+                                <span class="author-name">云谷千羽</span>
                             </div>
-                            <span class="read-time">6 分钟阅读</span>
+                            <span class="read-time">12 分钟阅读</span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="featured-card">
+                <article class="featured-card" data-post="example">
                     <div class="card-body">
                         <div class="card-meta">
-                            <span class="meta-category">React</span>
-                            <span class="meta-date">2025-05-25</span>
+                            <span class="meta-category">示例解析</span>
+                            <span class="meta-date">2026-09-04</span>
                         </div>
-                        <h3 class="card-title">React Server Components 实战指南</h3>
-                        <p class="card-desc">理解RSC的工作原理，学习如何在项目中正确使用服务端组件。</p>
+                        <h3 class="card-title">AwakeScene 拆解：一个固定步长下同步的平台跳跃示例</h3>
+                        <p class="card-desc">状态机、Fixation 与 SyncManager 如何拼出一个可双端运行的平台跳跃小游戏。</p>
                         <div class="card-footer">
                             <div class="author">
-                                <div class="author-avatar">RC</div>
-                                <span class="author-name">ReactCrafter</span>
+                                <div class="author-avatar">云</div>
+                                <span class="author-name">云谷千羽</span>
                             </div>
-                            <span class="read-time">10 分钟阅读</span>
+                            <span class="read-time">13 分钟阅读</span>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
         <!-- 文章列表 -->
-        <section class="posts">
+        <section class="posts" id="posts">
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-icon">◇</span>
-                    最新文章
+                    全部文章
                 </h2>
-                <div class="filter-tabs">
+                <div class="filter-tabs" id="filterTabs">
                     <button class="filter-tab active" data-filter="all">全部</button>
-                    <button class="filter-tab" data-filter="javascript">JavaScript</button>
-                    <button class="filter-tab" data-filter="css">CSS</button>
-                    <button class="filter-tab" data-filter="react">React</button>
-                    <button class="filter-tab" data-filter="node">Node.js</button>
+                    <button class="filter-tab" data-filter="架构设计">架构设计</button>
+                    <button class="filter-tab" data-filter="核心运行时">核心运行时</button>
+                    <button class="filter-tab" data-filter="框架基建">框架基建</button>
+                    <button class="filter-tab" data-filter="工具链">工具链</button>
+                    <button class="filter-tab" data-filter="网络同步">网络同步</button>
+                    <button class="filter-tab" data-filter="服务器">服务器</button>
+                    <button class="filter-tab" data-filter="示例解析">示例解析</button>
                 </div>
             </div>
 
-            <div class="posts-grid" id="postsGrid">
-                <!-- 由JS动态生成 -->
+            <p class="posts-note" id="postsNote"></p>
+            <div class="posts-grid" id="postsGrid"></div>
+        </section>
+
+        <!-- 项目 -->
+        <section class="projects" id="projects">
+            <div class="section-header">
+                <h2 class="section-title"><span class="title-icon">✦</span>开源项目</h2>
+                <a class="section-link" href="https://github.com/1176892094" target="_blank" rel="noopener">GitHub →</a>
             </div>
 
-            <div class="pagination">
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <button class="page-btn">...</button>
-                <button class="page-btn">8</button>
-                <button class="page-btn next">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"/>
-                    </svg>
-                </button>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-head">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                <polyline points="2 17 12 22 22 17"/>
+                                <polyline points="2 12 12 17 22 12"/>
+                            </svg>
+                        </div>
+                        <div class="project-titles">
+                            <h3>Astraia</h3>
+                            <span class="project-sub">Unity 客户端框架</span>
+                        </div>
+                        <span class="project-state">Unity 6000.3</span>
+                    </div>
+                    <p class="project-desc">在纯 C# 核心之上提供 Unity 运行时封装、网络层与编辑器工具链：AssetBundle 资源、UI 面板、数据表、对象同步与 IL 代码生成。</p>
+                    <div class="project-tags">
+                        <span>Unity</span><span>ILPostProcessor</span><span>AssetBundle</span><span>RPC</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="project-btn" href="https://github.com/1176892094/Astraia" target="_blank" rel="noopener">查看仓库</a>
+                        <a class="project-btn ghost" href="#posts" data-category="网络同步">相关文章</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-head">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </div>
+                        <div class="project-titles">
+                            <h3>Astraia-Net</h3>
+                            <span class="project-sub">纯 C# 核心与大厅服务器</span>
+                        </div>
+                        <span class="project-state">netstandard2.1</span>
+                    </div>
+                    <p class="project-desc">不依赖 Unity 的核心运行时：事件与对象池、确定性类型、A*/FlowField、KCP 传输与房间中继服务器。构建后复制到 Unity Plugins 供两端复用。</p>
+                    <div class="project-tags">
+                        <span>C#</span><span>KCP</span><span>Fixation</span><span>Lobby</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="project-btn" href="https://github.com/1176892094/JFramework-Net" target="_blank" rel="noopener">查看仓库</a>
+                        <a class="project-btn ghost" href="#posts" data-category="核心运行时">相关文章</a>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- 订阅区域 -->
+        <!-- 关于 -->
+        <section class="about" id="about">
+            <div class="section-header">
+                <h2 class="section-title"><span class="title-icon">◇</span>关于我</h2>
+            </div>
+            <div class="about-card">
+                <div class="about-avatar">云</div>
+                <div class="about-info">
+                    <h3>云谷千羽</h3>
+                    <p class="about-role">游戏框架开发者 · Unity / C# / 网络同步</p>
+                    <p class="about-bio">
+                        维护 Astraia 与 Astraia-Net 两个开源仓库。平时主要研究 Unity 工程化、纯 C# 服务端复用、确定性模拟和编辑器工具链。
+                        这个博客用来沉淀框架设计里踩过的坑与想清楚的道理。
+                    </p>
+                    <div class="about-tags">
+                        <span>Unity</span><span>C#</span><span>KCP</span><span>IL 织入</span><span>确定性模拟</span>
+                    </div>
+                    <div class="about-links">
+                        <a href="https://github.com/1176892094" target="_blank" rel="noopener">GitHub 主页</a>
+                        <a href="https://github.com/1176892094/Astraia" target="_blank" rel="noopener">Astraia</a>
+                        <a href="https://github.com/1176892094/JFramework-Net" target="_blank" rel="noopener">Astraia-Net</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系区域 -->
         <section class="newsletter">
             <div class="newsletter-inner">
                 <div class="newsletter-content">
-                    <h2 class="newsletter-title">订阅我们的通讯</h2>
-                    <p class="newsletter-desc">每周获取最新技术文章、教程和资源推荐。</p>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <div class="input-group">
-                            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
+                    <h2 class="newsletter-title">一起聊聊 Astraia</h2>
+                    <p class="newsletter-desc">对框架设计、对象同步或代码生成感兴趣?欢迎通过 GitHub 交流,也可以直接到仓库提交 Issue。</p>
+                    <div class="contact-actions">
+                        <a class="btn-primary contact-btn" href="https://github.com/1176892094" target="_blank" rel="noopener">
+                            <span>访问 GitHub</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
                             </svg>
-                            <input type="email" placeholder="输入你的邮箱地址" required>
-                            <button type="submit" class="btn-subscribe">
-                                <span>订阅</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12"/>
-                                    <polyline points="12 5 19 12 12 19"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </form>
-                    <p class="newsletter-note">零垃圾邮件，随时可退订。</p>
+                        </a>
+                        <a class="btn-outline contact-outline" href="https://github.com/1176892094/Astraia/issues" target="_blank" rel="noopener">提交 Issue</a>
+                    </div>
+                    <p class="newsletter-note">静态博客 · 文章会随 Astraia 的迭代持续更新</p>
                 </div>
                 <div class="newsletter-visual">
                     <div class="newsletter-orbs">
@@ -279,21 +347,24 @@
                     <div class="footer-logo">
                         <span class="logo-aqua">云谷千羽的博客</span>
                     </div>
-                    <p class="footer-desc">在蓝绿渐变的数字海洋中，探索代码与设计的无限可能。</p>
+                    <p class="footer-desc">记录 Astraia 系列框架的架构选择与工程实践,从纯 C# 核心到 Unity 客户端。</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="GitHub">
+                        <a href="https://github.com/1176892094" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        <a href="https://github.com/1176892094/Astraia" class="social-link" target="_blank" rel="noopener" aria-label="Astraia">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                <polyline points="2 17 12 22 22 17"/>
+                                <polyline points="2 12 12 17 22 12"/>
                             </svg>
                         </a>
-                        <a href="#" class="social-link" aria-label="Discord">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                        <a href="https://github.com/1176892094/JFramework-Net" class="social-link" target="_blank" rel="noopener" aria-label="Astraia-Net">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
                             </svg>
                         </a>
                     </div>
@@ -301,33 +372,32 @@
                 <div class="footer-col">
                     <h4>导航</h4>
                     <ul>
-                        <li><a href="#">首页</a></li>
-                        <li><a href="#">文章</a></li>
-                        <li><a href="#">项目</a></li>
-                        <li><a href="#">关于</a></li>
+                        <li><a href="#home" class="js-scroll">首页</a></li>
+                        <li><a href="#posts" class="js-scroll">文章</a></li>
+                        <li><a href="#projects" class="js-scroll">项目</a></li>
+                        <li><a href="#about" class="js-scroll">关于</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>分类</h4>
                     <ul>
-                        <li><a href="#">JavaScript</a></li>
-                        <li><a href="#">CSS & 设计</a></li>
-                        <li><a href="#">React</a></li>
-                        <li><a href="#">Node.js</a></li>
+                        <li><a href="#posts" class="footer-category" data-category="架构设计">架构设计</a></li>
+                        <li><a href="#posts" class="footer-category" data-category="网络同步">网络同步</a></li>
+                        <li><a href="#posts" class="footer-category" data-category="核心运行时">核心运行时</a></li>
+                        <li><a href="#posts" class="footer-category" data-category="工具链">工具链</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>更多</h4>
+                    <h4>仓库</h4>
                     <ul>
-                        <li><a href="#">RSS 订阅</a></li>
-                        <li><a href="#">站点地图</a></li>
-                        <li><a href="#">隐私政策</a></li>
-                        <li><a href="#">联系我们</a></li>
+                        <li><a href="https://github.com/1176892094/Astraia" target="_blank" rel="noopener">Astraia</a></li>
+                        <li><a href="https://github.com/1176892094/JFramework-Net" target="_blank" rel="noopener">Astraia-Net</a></li>
+                        <li><a href="https://github.com/1176892094/1176892094.github.io" target="_blank" rel="noopener">本站源码</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 云谷千羽的博客. All rights reserved. 蓝绿渐变 · 极致美学</p>
+                <p>&copy; 2026 云谷千羽的博客. All rights reserved. 蓝绿渐变 · Astraia 工程笔记</p>
             </div>
         </div>
     </footer>
@@ -340,6 +410,37 @@
     </svg>
 </button>
 
+<!-- 文章阅读器 -->
+<div class="reader" id="reader" aria-hidden="true">
+    <div class="reader-backdrop" data-close-reader></div>
+    <div class="reader-panel" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+        <header class="reader-header">
+            <div class="reader-meta">
+                <span class="meta-category" id="readerCategory"></span>
+                <span class="reader-date" id="readerDate"></span>
+                <span class="reader-time" id="readerTime"></span>
+            </div>
+            <button class="reader-close" id="readerClose" aria-label="关闭文章">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </header>
+        <article class="reader-body">
+            <h1 class="reader-title" id="readerTitle"></h1>
+            <div class="reader-excerpt" id="readerExcerpt"></div>
+            <div class="reader-content" id="readerContent"></div>
+        </article>
+        <footer class="reader-nav">
+            <button class="reader-prev" id="readerPrev">← 上一篇</button>
+            <button class="reader-back" id="readerBack">返回列表</button>
+            <button class="reader-next" id="readerNext">下一篇 →</button>
+        </footer>
+    </div>
+</div>
+
+<script src="posts.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
