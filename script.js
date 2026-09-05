@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function ()
     let filteredPosts = [...posts];
     let currentFilter = 'all';
     let currentIndex = 0;
+    let currentPage = 1;
+    const pageSize = 12;
 
     // ===== 文章阅读器 =====
     const reader = document.getElementById('reader');
@@ -198,7 +200,12 @@ document.addEventListener('DOMContentLoaded', function ()
         const grid = document.getElementById('postsGrid');
         grid.innerHTML = '';
 
-        list.forEach(post =>
+        const totalPages = Math.max(1, Math.ceil(list.length / pageSize));
+        currentPage = Math.min(currentPage, totalPages);
+        const start = (currentPage - 1) * pageSize;
+        const pageItems = list.slice(start, start + pageSize);
+
+        pageItems.forEach(post =>
         {
             const card = document.createElement('article');
             card.className = 'post-card';
@@ -220,6 +227,69 @@ document.addEventListener('DOMContentLoaded', function ()
         note.textContent = list.length === posts.length
             ? `共 ${posts.length} 篇,包含源码类逐一拆解`
             : `“${currentFilter}”分类下共 ${list.length} 篇`;
+
+        renderPagination(totalPages);
+    }
+
+    // ===== 分页 =====
+    function renderPagination(totalPages)
+    {
+        const container = document.getElementById('pagination');
+        container.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        const createButton = (label, page, isActive, disabled) =>
+        {
+            const button = document.createElement('button');
+            button.className = 'page-btn' + (isActive ? ' active' : '');
+            button.textContent = label;
+            button.disabled = !!disabled;
+            if (!disabled && !isActive)
+            {
+                button.addEventListener('click', () =>
+                {
+                    currentPage = page;
+                    renderPosts(filteredPosts);
+                    const postsTop = document.getElementById('posts');
+                    postsTop.scrollIntoView({behavior: 'smooth', block: 'start'});
+                });
+            }
+            return button;
+        };
+
+        const pushEllipsis = () =>
+        {
+            const span = document.createElement('span');
+            span.className = 'page-dots';
+            span.textContent = '…';
+            container.appendChild(span);
+        };
+
+        container.appendChild(createButton('‹', currentPage - 1, false, currentPage === 1));
+
+        const pageNumbers = [];
+        if (totalPages <= 7)
+        {
+            for (let i = 1; i <= totalPages; i++) pageNumbers.push(i);
+        }
+        else
+        {
+            pageNumbers.push(1);
+            if (currentPage > 3) pushEllipsis();
+            for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++)
+            {
+                pageNumbers.push(i);
+            }
+            if (currentPage < totalPages - 2) pushEllipsis();
+            pageNumbers.push(totalPages);
+        }
+
+        pageNumbers.forEach(page =>
+        {
+            container.appendChild(createButton(page, page, page === currentPage, false));
+        });
+
+        container.appendChild(createButton('›', currentPage + 1, false, currentPage === totalPages));
     }
 
     // ===== 分类筛选 =====
@@ -235,6 +305,7 @@ document.addEventListener('DOMContentLoaded', function ()
     function setFilter(filter)
     {
         currentFilter = filter;
+        currentPage = 1;
         filterTabs.forEach(tab =>
         {
             tab.classList.toggle('active', tab.dataset.filter === filter);

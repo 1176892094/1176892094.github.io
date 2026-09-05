@@ -889,6 +889,20 @@ body {
     border-color: transparent;
 }
 
+.page-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    color: var(--text-tertiary);
+    font-size: 0.95rem;
+    user-select: none;
+}
+
+.pagination {
+    flex-wrap: wrap;
+}
+
 /* 订阅区域 */
 .newsletter {
     padding: 4rem 0;
