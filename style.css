@@ -1047,16 +1047,30 @@ body {
 }
 
 .footer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2.5rem 3rem;
     max-width: 1280px;
     margin: 0 auto 3rem;
     padding: 0 2rem;
 }
 
 .brand-col {
-    grid-column: 1 / -1;
+    flex: 1 1 340px;
+    min-width: 0;
+}
+
+.footer-link-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    flex: 2 1 660px;
+    min-width: 0;
+}
+
+.footer-link-cols .footer-col {
+    min-width: 0;
 }
 
 .footer-logo {
@@ -2060,6 +2074,10 @@ html.reader-open {
     .footer-grid {
         gap: 1.5rem 0.75rem;
         padding: 0 1rem;
+    }
+
+    .footer-link-cols {
+        gap: 1.5rem 0.75rem;
     }
 
     .footer-col a {

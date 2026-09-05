@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function ()
     let currentIndex = 0;
     let currentPage = 1;
     const pageSize = 6;
+    let savedScrollY = 0;
 
     // ===== 文章阅读器 =====
     const reader = document.getElementById('reader');
@@ -155,6 +156,10 @@ document.addEventListener('DOMContentLoaded', function ()
         post.blocks.forEach(block => readerContent.appendChild(renderBlock(block)));
 
         updateReaderNav();
+        if (!reader.classList.contains('open'))
+        {
+            savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+        }
         reader.classList.add('open');
         reader.setAttribute('aria-hidden', 'false');
         document.body.classList.add('reader-open');
@@ -168,6 +173,13 @@ document.addEventListener('DOMContentLoaded', function ()
         reader.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('reader-open');
         document.documentElement.classList.remove('reader-open');
+        requestAnimationFrame(() =>
+        {
+            const root = document.documentElement;
+            root.style.scrollBehavior = 'auto';
+            window.scrollTo(0, savedScrollY);
+            root.style.removeProperty('scroll-behavior');
+        });
     }
 
     function updateReaderNav()
