@@ -2010,3 +2010,35 @@ html.reader-open {
         top: 70%;
     }
 }
+
+/* 窄屏下让指定标题栏与按钮保持同行 */
+@media (max-width: 480px) {
+    .hero-buttons {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-outline {
+        flex: 1 1 0;
+        min-width: 0;
+        justify-content: center;
+        padding: 0.85rem 0.5rem;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+
+    .featured .section-header,
+    .projects .section-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 0.75rem;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
