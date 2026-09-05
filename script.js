@@ -512,8 +512,13 @@ document.addEventListener('DOMContentLoaded', function ()
 
     // ===== 滚动进度条与回到顶部 =====
     const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () =>
+    let scrollFrame = false;
+    const handleScroll = () =>
     {
+        if (scrollFrame) return;
+        scrollFrame = true;
+        requestAnimationFrame(() =>
+        {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const progress = (scrollTop / docHeight) * 100;
@@ -521,7 +526,10 @@ document.addEventListener('DOMContentLoaded', function ()
 
         backToTop.classList.toggle('visible', scrollTop > 500);
         updateActiveNav();
-    }, {passive: true});
+            scrollFrame = false;
+        });
+    };
+    window.addEventListener('scroll', handleScroll, {passive: true});
 
     backToTop.addEventListener('click', () =>
     {
@@ -603,7 +611,7 @@ document.addEventListener('DOMContentLoaded', function ()
     function createBubbles()
     {
         const container = document.getElementById('bubbles');
-        const count = 12;
+        const count = window.innerWidth < 768 ? 4 : 9;
 
         for (let i = 0; i < count; i++)
         {

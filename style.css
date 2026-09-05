@@ -152,22 +152,6 @@ body {
             radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
             radial-gradient(ellipse at 80% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
             radial-gradient(ellipse at 50% 50%, rgba(0, 188, 212, 0.04) 0%, transparent 50%);
-    animation: gradientShift 20s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-    0%, 100% {
-        background-position: 0% 0%;
-    }
-    25% {
-        background-position: 100% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    75% {
-        background-position: 0% 100%;
-    }
 }
 
 /* 气泡装饰 */
@@ -224,9 +208,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    background: var(--bg-glass);
+    background: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
     transition: var(--transition);
 }
@@ -539,8 +521,7 @@ body {
 .floating-card,
 .newsletter-float-card {
     width: max-content;
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
+    background: var(--bg-secondary);
     padding: 1rem;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
@@ -642,8 +623,7 @@ body {
 }
 
 .featured-card {
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
+    background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -798,8 +778,7 @@ body {
 }
 
 .post-card {
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
+    background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: 1.8rem;
@@ -1023,6 +1002,12 @@ body {
     animation: orbFloat 5s ease-in-out infinite 2s;
 }
 
+/* 光球与渐变光斑保持静态，避免长时间停留持续占用 GPU */
+.orb,
+.n-orb {
+    animation: none;
+}
+
 /* 页脚 */
 .footer {
     position: relative;
@@ -1169,8 +1154,7 @@ body {
     right: 2rem;
     width: 48px;
     height: 48px;
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
+    background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 50%;
     display: flex;
@@ -1368,8 +1352,7 @@ body {
 }
 
 .project-card {
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
+    background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     padding: 1.8rem;
@@ -1501,8 +1484,7 @@ body {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1.8rem;
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
+    background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xl);
     padding: 2rem;
@@ -1636,9 +1618,7 @@ body {
 .reader-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(5, 18, 32, 0.62);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(5, 18, 32, 0.74);
     animation: backdropIn 0.25s ease;
 }
 
@@ -2082,5 +2062,16 @@ html.reader-open {
 
     .footer-col a {
         font-size: 0.82rem;
+    }
+}
+
+/* 系统开启“减弱动态效果”时停用动画，进一步降低发热 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }
