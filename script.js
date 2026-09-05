@@ -600,9 +600,9 @@ document.addEventListener('DOMContentLoaded', function ()
             const size = Math.random() * 40 + 20;
             bubble.style.width = size + 'px';
             bubble.style.height = size + 'px';
-            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.left = Math.random() * 90 + '%';
             bubble.style.animationDuration = (Math.random() * 15 + 10) + 's';
-            bubble.style.animationDelay = Math.random() * 15 + 's';
+            bubble.style.animationDelay = -Math.random() * 15 + 's';
             container.appendChild(bubble);
         }
     }

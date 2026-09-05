@@ -179,10 +179,12 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
 }
 
 .bubble {
     position: absolute;
+    opacity: 0;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%,
     rgba(0, 212, 255, 0.15),
@@ -534,10 +536,8 @@ body {
     75% { transform: translate(-20px, -10px) scale(1.05); }
 }
 
-.floating-card {
-    position: absolute;
-    top: 40%;
-    right: 15%;
+.floating-card,
+.newsletter-float-card {
     width: max-content;
     background: var(--bg-card);
     backdrop-filter: blur(10px);
@@ -546,6 +546,12 @@ body {
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
     animation: floatCard 5s ease-in-out infinite;
+}
+
+.floating-card {
+    position: absolute;
+    top: 40%;
+    right: 15%;
 }
 
 @keyframes floatCard {
@@ -967,14 +973,6 @@ body {
 
 .newsletter-float-card {
     position: absolute;
-    width: max-content;
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
-    padding: 1rem;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-lg);
-    animation: floatCard 5s ease-in-out infinite;
     z-index: 1;
 }
 
@@ -2016,7 +2014,7 @@ html.reader-open {
 @media (max-width: 600px) {
     .floating-card-left-1,
     .floating-card-left-2 {
-        right: calc(8% + 100px);
+        right: calc(10% + 150px);
     }
 
     .floating-card-left-1 {
