@@ -36,14 +36,15 @@ document.addEventListener('DOMContentLoaded', function ()
 
     const moduleMeta = window.moduleMeta || [];
     const modulePosts = moduleMeta.map((meta, index) => buildModulePost(meta, index));
+    const extraPosts = window.extraPosts || [];
     // 已被逐类拆解覆盖的多模块综述，不再展示
     const mergedIds = ['runtime', 'algorithm', 'engine', 'network'];
-    const posts = [...modulePosts, ...postsData.filter(post => !mergedIds.includes(post.id))];
+    const posts = [...modulePosts, ...postsData.filter(post => !mergedIds.includes(post.id)), ...extraPosts];
     let filteredPosts = [...posts];
     let currentFilter = 'all';
     let currentIndex = 0;
     let currentPage = 1;
-    const pageSize = 12;
+    const pageSize = 6;
 
     // ===== 文章阅读器 =====
     const reader = document.getElementById('reader');
