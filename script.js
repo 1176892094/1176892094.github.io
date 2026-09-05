@@ -1,7 +1,44 @@
 // script.js - 云谷千羽的博客 · Astraia 工程笔记
 document.addEventListener('DOMContentLoaded', function ()
 {
-    const posts = [...postsData];
+    // 将“类拆解”元数据转换成标准文章
+    function buildModulePost(meta, index)
+    {
+        const pad = n => String(n).padStart(2, '0');
+        const base = new Date(Date.UTC(2026, 7, 1));
+        const days = Math.floor(index * 0.7);
+        const dateObj = new Date(base.getTime() + days * 86400000);
+        const date = `${dateObj.getUTCFullYear()}-${pad(dateObj.getUTCMonth() + 1)}-${pad(dateObj.getUTCDate())}`;
+        const blocks = [
+            { t: 'p', x: meta.intro },
+            { t: 'table', head: ['源码位置', '声明'], rows: [[meta.source, '`' + meta.decl + '`']] },
+            { t: 'h2', x: `这个类负责什么` },
+            { t: 'ul', items: meta.duties }
+        ];
+        if (meta.note)
+        {
+            blocks.push({ t: 'quote', x: meta.note });
+        }
+        blocks.push({ t: 'h2', x: '核心 API 速览' });
+        blocks.push({ t: 'code', lang: 'csharp', text: meta.apis });
+        blocks.push({ t: 'h2', x: '与谁协作' });
+        blocks.push({ t: 'ul', items: meta.with });
+        return {
+            id: meta.id,
+            category: meta.category,
+            title: meta.title,
+            excerpt: meta.excerpt,
+            date,
+            readTime: '5 分钟',
+            blocks
+        };
+    }
+
+    const moduleMeta = window.moduleMeta || [];
+    const modulePosts = moduleMeta.map((meta, index) => buildModulePost(meta, index));
+    // 已被逐类拆解覆盖的多模块综述，不再展示
+    const mergedIds = ['runtime', 'algorithm', 'engine', 'network'];
+    const posts = [...modulePosts, ...postsData.filter(post => !mergedIds.includes(post.id))];
     let filteredPosts = [...posts];
     let currentFilter = 'all';
     let currentIndex = 0;
@@ -181,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function ()
 
         const note = document.getElementById('postsNote');
         note.textContent = list.length === posts.length
-            ? `共 ${posts.length} 篇,按写作时间排序`
+            ? `共 ${posts.length} 篇,包含源码类逐一拆解`
             : `“${currentFilter}”分类下共 ${list.length} 篇`;
     }
 
@@ -495,6 +532,11 @@ document.addEventListener('DOMContentLoaded', function ()
     // ===== 初始化 =====
     function init()
     {
+        const articleStat = document.querySelector('.stat-number[data-count="8"]');
+        if (articleStat)
+        {
+            articleStat.dataset.count = String(posts.length);
+        }
         renderPosts(posts);
         animateNumbers();
         createBubbles();

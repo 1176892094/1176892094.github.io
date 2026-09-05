@@ -128,97 +128,6 @@
             </div>
         </section>
 
-        <!-- 精选文章 -->
-        <section class="featured">
-            <div class="section-header">
-                <h2 class="section-title"><span class="title-icon">✦</span>精选文章</h2>
-                <a href="#posts" class="section-link js-scroll">查看全部 →</a>
-            </div>
-
-            <div class="featured-grid">
-                <article class="featured-card main-card" data-post="arch">
-                    <div class="card-image">
-                        <div class="image-gradient"></div>
-                        <span class="card-tag">架构</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="meta-category">架构设计</span>
-                            <span class="meta-date">2026-08-16</span>
-                        </div>
-                        <h3 class="card-title">Astraia 是怎么长出来的：一个 Unity 框架的两层架构</h3>
-                        <p class="card-desc">同一个核心库，既被 Unity 客户端以 DLL 引用，又被 .NET 大厅服务器直接使用。梳理两个仓库的分工与依赖方向。</p>
-                        <div class="card-footer">
-                            <div class="author">
-                                <div class="author-avatar">云</div>
-                                <span class="author-name">云谷千羽</span>
-                            </div>
-                            <span class="read-time">9 分钟阅读</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="featured-card" data-post="network">
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="meta-category">网络同步</span>
-                            <span class="meta-date">2026-08-30</span>
-                        </div>
-                        <h3 class="card-title">对象同步设计：NetworkEntity、模块与观察者</h3>
-                        <p class="card-desc">从 spawn 快照到 dirty 位，看一个网络对象如何被实体、模块与观察者列表组织起来。</p>
-                        <div class="card-footer">
-                            <div class="author">
-                                <div class="author-avatar">云</div>
-                                <span class="author-name">云谷千羽</span>
-                            </div>
-                            <span class="read-time">12 分钟阅读</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="featured-card" data-post="example">
-                    <div class="card-body">
-                        <div class="card-meta">
-                            <span class="meta-category">示例解析</span>
-                            <span class="meta-date">2026-09-04</span>
-                        </div>
-                        <h3 class="card-title">AwakeScene 拆解：一个固定步长下同步的平台跳跃示例</h3>
-                        <p class="card-desc">状态机、Fixation 与 SyncManager 如何拼出一个可双端运行的平台跳跃小游戏。</p>
-                        <div class="card-footer">
-                            <div class="author">
-                                <div class="author-avatar">云</div>
-                                <span class="author-name">云谷千羽</span>
-                            </div>
-                            <span class="read-time">13 分钟阅读</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- 文章列表 -->
-        <section class="posts" id="posts">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-icon">◇</span>
-                    全部文章
-                </h2>
-                <div class="filter-tabs" id="filterTabs">
-                    <button class="filter-tab active" data-filter="all">全部</button>
-                    <button class="filter-tab" data-filter="架构设计">架构设计</button>
-                    <button class="filter-tab" data-filter="核心运行时">核心运行时</button>
-                    <button class="filter-tab" data-filter="框架基建">框架基建</button>
-                    <button class="filter-tab" data-filter="工具链">工具链</button>
-                    <button class="filter-tab" data-filter="网络同步">网络同步</button>
-                    <button class="filter-tab" data-filter="服务器">服务器</button>
-                    <button class="filter-tab" data-filter="示例解析">示例解析</button>
-                </div>
-            </div>
-
-            <p class="posts-note" id="postsNote"></p>
-            <div class="posts-grid" id="postsGrid"></div>
-        </section>
-
         <!-- 项目 -->
         <section class="projects" id="projects">
             <div class="section-header">
@@ -276,6 +185,97 @@
                     </div>
                 </article>
             </div>
+        </section>
+
+        <!-- 精选文章 -->
+        <section class="featured">
+            <div class="section-header">
+                <h2 class="section-title"><span class="title-icon">✦</span>精选文章</h2>
+                <a href="#posts" class="section-link js-scroll">查看全部 →</a>
+            </div>
+
+            <div class="featured-grid">
+                <article class="featured-card main-card" data-post="arch">
+                    <div class="card-image">
+                        <div class="image-gradient"></div>
+                        <span class="card-tag">架构</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="meta-category">架构设计</span>
+                            <span class="meta-date">2026-08-16</span>
+                        </div>
+                        <h3 class="card-title">Astraia 是怎么长出来的：一个 Unity 框架的两层架构</h3>
+                        <p class="card-desc">同一个核心库，既被 Unity 客户端以 DLL 引用，又被 .NET 大厅服务器直接使用。梳理两个仓库的分工与依赖方向。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar">云</div>
+                                <span class="author-name">云谷千羽</span>
+                            </div>
+                            <span class="read-time">9 分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="featured-card" data-post="m-network-entity">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="meta-category">网络同步</span>
+                            <span class="meta-date">2026-08-26</span>
+                        </div>
+                        <h3 class="card-title">NetworkEntity：网络实体</h3>
+                        <p class="card-desc">实体如何收集网络模块、维护观察者列表，并在不同会话角色下决定同步行为。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar">云</div>
+                                <span class="author-name">云谷千羽</span>
+                            </div>
+                            <span class="read-time">5 分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="featured-card" data-post="example">
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span class="meta-category">示例解析</span>
+                            <span class="meta-date">2026-09-04</span>
+                        </div>
+                        <h3 class="card-title">AwakeScene 拆解：一个固定步长下同步的平台跳跃示例</h3>
+                        <p class="card-desc">状态机、Fixation 与 SyncManager 如何拼出一个可双端运行的平台跳跃小游戏。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar">云</div>
+                                <span class="author-name">云谷千羽</span>
+                            </div>
+                            <span class="read-time">13 分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 文章列表 -->
+        <section class="posts" id="posts">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-icon">◇</span>
+                    全部文章
+                </h2>
+                <div class="filter-tabs" id="filterTabs">
+                    <button class="filter-tab active" data-filter="all">全部</button>
+                    <button class="filter-tab" data-filter="架构设计">架构设计</button>
+                    <button class="filter-tab" data-filter="核心运行时">核心运行时</button>
+                    <button class="filter-tab" data-filter="框架基建">框架基建</button>
+                    <button class="filter-tab" data-filter="工具链">工具链</button>
+                    <button class="filter-tab" data-filter="网络同步">网络同步</button>
+                    <button class="filter-tab" data-filter="服务器">服务器</button>
+                    <button class="filter-tab" data-filter="示例解析">示例解析</button>
+                </div>
+            </div>
+
+            <p class="posts-note" id="postsNote"></p>
+            <div class="posts-grid" id="postsGrid"></div>
         </section>
 
         <!-- 关于 -->
@@ -441,6 +441,10 @@
 </div>
 
 <script src="posts.js"></script>
+<script src="posts-modules-net.js"></script>
+<script src="posts-modules-unity-engine.js"></script>
+<script src="posts-modules-unity-net.js"></script>
+<script src="posts-modules-extras.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
