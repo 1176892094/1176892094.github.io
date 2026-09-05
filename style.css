@@ -1024,8 +1024,8 @@ body {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem 2rem;
     max-width: 1280px;
     margin: 0 auto 3rem;
     padding: 0 2rem;
@@ -1042,10 +1042,12 @@ body {
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
     max-width: 300px;
+    overflow-wrap: anywhere;
 }
 
 .social-links {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.8rem;
 }
 
@@ -1067,6 +1069,14 @@ body {
     background: rgba(0, 212, 255, 0.05);
 }
 
+.social-link.footer-contact {
+    width: auto;
+    padding: 0 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
 .footer-col h4 {
     font-size: 0.9rem;
     font-weight: 700;
@@ -1086,6 +1096,7 @@ body {
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.88rem;
+    overflow-wrap: anywhere;
     transition: var(--transition);
 }
 
@@ -1106,6 +1117,7 @@ body {
 .footer-bottom p {
     font-size: 0.85rem;
     color: var(--text-tertiary);
+    overflow-wrap: anywhere;
 }
 
 /* 回到顶部 */
@@ -1177,9 +1189,6 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
 }
 
 @media (max-width: 768px) {
@@ -1247,11 +1256,6 @@ body {
         padding: 0.5rem 0.2rem;
         text-align: center;
         font-size: 0.78rem;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
     }
 
     .newsletter-inner {
@@ -1525,6 +1529,18 @@ body {
 
 .about-links a:hover {
     color: var(--aqua-700);
+}
+
+.about-links .plain-contact {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+}
+
+.contact-hint {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
 }
 
 /* 联系区域：复用 newsletter 外壳 */
@@ -1961,5 +1977,18 @@ html.reader-open {
         order: -1;
         width: 100%;
         margin: 0 0 0.3rem;
+    }
+}
+
+/* Footer 自动换行 */
+@media (max-width: 1270px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
     }
 }
