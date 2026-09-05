@@ -158,7 +158,8 @@ document.addEventListener('DOMContentLoaded', function ()
         reader.classList.add('open');
         reader.setAttribute('aria-hidden', 'false');
         document.body.classList.add('reader-open');
-        reader.querySelector('.reader-panel').scrollTop = 0;
+        document.documentElement.classList.add('reader-open');
+        reader.querySelector('.reader-body').scrollTop = 0;
     }
 
     function closeReader()
@@ -166,6 +167,7 @@ document.addEventListener('DOMContentLoaded', function ()
         reader.classList.remove('open');
         reader.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('reader-open');
+        document.documentElement.classList.remove('reader-open');
     }
 
     function updateReaderNav()
