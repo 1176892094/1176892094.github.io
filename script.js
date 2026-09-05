@@ -551,15 +551,19 @@ document.addEventListener('DOMContentLoaded', function ()
 
     function updateActiveNav()
     {
-        const sections = ['home', 'posts', 'projects', 'about'];
+        const sections = ['home', 'projects', 'posts', 'about'];
         const scrollPos = window.scrollY + 140;
         let active = 'home';
+        let activeTop = -Infinity;
         sections.forEach(id =>
         {
             const el = document.getElementById(id);
-            if (el && el.offsetTop <= scrollPos)
+            if (!el) return;
+            const top = el.offsetTop;
+            if (top <= scrollPos && top > activeTop)
             {
                 active = id;
+                activeTop = top;
             }
         });
         if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 10)
